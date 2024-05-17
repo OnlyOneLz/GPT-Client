@@ -1,6 +1,6 @@
 const apiFetch = async (messageHistory) => {
   try {
-    const response = await fetch(`http://localhost:4000/Api-fetch`, {
+    const response = await fetch(`${process.env.BACKEND_URL}/Api-fetch`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

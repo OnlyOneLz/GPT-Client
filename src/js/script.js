@@ -73,7 +73,7 @@ const app = async () => {
   const fetchMessages = async (chatId) => {
     try {
       const response = await fetch(
-        `http://localhost:4000/conversations/one/${chatId}`,
+        `${process.env.BACKEND_URL}/conversations/one/${chatId}`,
         {
           method: "GET",
           headers: {
@@ -104,7 +104,7 @@ const app = async () => {
   const getChats = async () => {
     try {
       const response = await fetch(
-        `http://localhost:4000/conversations/user/${userId}`,
+        `${process.env.BACKEND_URL}/conversations/user/${userId}`,
         {
           method: "GET",
           headers: {
@@ -115,8 +115,7 @@ const app = async () => {
       );
       const data = await response.json();
       if (response.status === 401) {
-        window.location.href =
-          "http://127.0.0.1:5500/client/src/html/login.html#";
+        window.location.href = "/login";
       } else if (data.length > 0) {
         data.forEach((chat) => {
           const chats = document.createElement("li");
@@ -148,7 +147,7 @@ const app = async () => {
   const deleteMessages = async () => {
     const conversationId = localStorage.getItem("conversationId");
     try {
-      await fetch(`http://localhost:4000/messages/${conversationId}`, {
+      await fetch(`${process.env.BACKEND_URL}/messages/${conversationId}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -162,7 +161,7 @@ const app = async () => {
   const deleteConversationWithMesssages = async (conversationId) => {
     try {
       const response = await fetch(
-        `http://localhost:4000/conversations/${conversationId}`,
+        `${process.env.BACKEND_URL}/conversations/${conversationId}`,
         {
           method: "DELETE",
           headers: {
@@ -176,7 +175,7 @@ const app = async () => {
       const messageHistory = localStorage.getItem("history");
       if (messageHistory && messageHistory.length > 0) {
         const response2 = await fetch(
-          `http://localhost:4000/messages/${conversationId}`,
+          `${process.env.BACKEND_URL}/messages/${conversationId}`,
           {
             method: "DELETE",
             headers: {
@@ -250,7 +249,7 @@ const app = async () => {
     localStorage.removeItem("token");
     localStorage.removeItem("conversationId");
     localStorage.removeItem("history");
-    window.location.href = "http://localhost:4000/login";
+    window.location.href = "/login";
   });
 
   document.addEventListener("click", (event) => {
