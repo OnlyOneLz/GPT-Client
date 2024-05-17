@@ -28,7 +28,7 @@ const app = () => {
 
   const fetchUser = async (email, password) => {
     try {
-      const response = await fetch("/user/get", {
+      const response = await fetch(`${process.env.BACKEND_URL}/user/get`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -76,7 +76,7 @@ const app = () => {
     const token = localStorage.getItem("token");
 
     try {
-      const response = await fetch("/protected", {
+      const response = await fetch(`${process.env.BACKEND_URL}/protected`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -101,7 +101,7 @@ const app = () => {
 
   const newSignup = async () => {
     try {
-      const response = await fetch("/users", {
+      const response = await fetch(`${process.env.BACKEND_URL}/users`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

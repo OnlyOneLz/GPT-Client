@@ -1,6 +1,6 @@
 export const newMessage = async (role, userId, conversationId, message) => {
   try {
-    const response = await fetch(`http://localhost:4000/messages`, {
+    const response = await fetch(`${process.env.BACKEND_URL}/messages`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

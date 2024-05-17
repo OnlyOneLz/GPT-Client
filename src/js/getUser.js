@@ -1,6 +1,6 @@
 export const apiFetch = async (token) => {
   try {
-    const response = await fetch(`http://localhost:4000/protected`, {
+    const response = await fetch(`${process.env.BACKEND_URL}/protected`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

@@ -4,7 +4,7 @@ export const createConversation = async (
   getChats
 ) => {
   try {
-    const response = await fetch(`http://localhost:4000/conversations`, {
+    const response = await fetch(`${process.env.BACKEND_URL}/conversations`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
